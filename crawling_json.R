@@ -20,6 +20,8 @@ payload <- list(
   pageRowCount = "10"
 )
 
+#length(response$content) >= 1000
+
 response <- httr::POST(url, body = payload, encode = "form")
 
 json_data <- jsonlite::fromJSON(content(response, as = "text"))
@@ -50,3 +52,6 @@ grid_df_data <- fromJSON(grid_data)
 #TARIFF_DLR2 -> BASE_YEAR - 2 특혜 적용 금액
 #NATN_NAME -> 국가
 #FTANAME -> FTA
+
+
+grid_df_data %>% select(FTANAME,NATN_NAME)
